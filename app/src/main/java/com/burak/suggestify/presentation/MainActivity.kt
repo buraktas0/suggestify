@@ -1,7 +1,8 @@
-package com.burak.suggestify
+package com.burak.suggestify.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.burak.suggestify.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
