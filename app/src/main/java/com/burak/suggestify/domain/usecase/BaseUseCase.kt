@@ -1,4 +1,8 @@
 package com.burak.suggestify.domain.usecase
 
-public abstract class BaseUseCase {
+import kotlinx.coroutines.flow.Flow
+
+public abstract class BaseUseCase<in ReqParams, out Response> {
+
+    abstract fun execute(params: ReqParams) : Flow<Response>
 }
