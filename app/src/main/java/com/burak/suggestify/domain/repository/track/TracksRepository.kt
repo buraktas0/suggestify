@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface TracksRepository {
 
-    suspend fun getSimilarTracks(request : TrackRequest) : Flow<List<Track>>
+    fun getSimilarTracks(request : TrackRequest) : Flow<List<Track>>
 }

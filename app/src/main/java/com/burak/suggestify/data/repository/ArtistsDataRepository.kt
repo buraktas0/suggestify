@@ -5,14 +5,17 @@ import com.burak.suggestify.domain.model.request.ArtistRequest
 import com.burak.suggestify.domain.model.response.Artist
 import com.burak.suggestify.domain.repository.artist.ArtistsRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ArtistsDataRepository @Inject constructor(
     private val apiService : ApiService
 ) : ArtistsRepository
 {
-    override suspend fun getSimilarArtists(request : ArtistRequest): Flow<List<Artist>> {
-        TODO("Not yet implemented")
-        apiService.getSimilarArtists(request.artist);
+    override fun getSimilarArtists(request : ArtistRequest): Flow<List<Artist>> {
+        return flow {
+            emit(apiService.getSimilarArtists(request.artist))
+        }
     }
 }

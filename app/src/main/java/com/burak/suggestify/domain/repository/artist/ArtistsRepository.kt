@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArtistsRepository {
 
-    suspend fun getSimilarArtists(request : ArtistRequest) : Flow<List<Artist>>
+    fun getSimilarArtists(request : ArtistRequest) : Flow<List<Artist>>
 }

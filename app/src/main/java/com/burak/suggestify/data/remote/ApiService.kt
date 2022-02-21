@@ -10,11 +10,11 @@ interface ApiService {
     @GET("/?method=artist.getSimilar")
     suspend fun getSimilarArtists(
         @Query("artist") artist: String
-    ): Artist
+    ): List<Artist>
 
     @GET("/?method=track.getSimilar")
     suspend fun getSimilarTracks(
         @Query("artist") artist: String,
         @Query("track") track: String
-    ): Track
+    ): List<Track>
 }

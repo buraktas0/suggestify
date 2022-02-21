@@ -9,9 +9,9 @@ import javax.inject.Inject
 
 class GetSimilarArtistUseCase @Inject constructor(
     private val repository: ArtistsRepository
-) : BaseUseCase<ArtistRequest, Artist>() {
+) : BaseUseCase<ArtistRequest, List<Artist>>() {
 
-    override fun execute(params: ArtistRequest): Flow<Artist> {
-        TODO("Not yet implemented")
+    override fun execute(params: ArtistRequest): Flow<List<Artist>> {
+        return repository.getSimilarArtists(params)
     }
 }
