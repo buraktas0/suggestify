@@ -1,6 +1,7 @@
 package com.burak.suggestify.data.remote
 
 import com.burak.suggestify.BuildConfig
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,8 +31,8 @@ class ApiModule {
                 it.proceed(request)
             }
             .build()
-
     }
+
 
     @Singleton
     @Provides

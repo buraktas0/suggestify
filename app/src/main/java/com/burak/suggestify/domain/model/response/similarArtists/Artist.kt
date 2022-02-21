@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response
+package com.burak.suggestify.domain.model.response.similarArtists
 
 data class Artist(
     val name : String,
@@ -8,3 +8,4 @@ data class Artist(
     val image: List<Image>,
     val streamable: Int
 )
+

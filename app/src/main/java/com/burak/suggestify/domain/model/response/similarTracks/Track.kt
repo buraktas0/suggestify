@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response
+package com.burak.suggestify.domain.model.response.similarTracks
 
 data class Track(
     val name : String,

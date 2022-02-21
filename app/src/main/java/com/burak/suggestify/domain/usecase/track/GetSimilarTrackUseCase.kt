@@ -1,7 +1,7 @@
 package com.burak.suggestify.domain.usecase.track
 
 import com.burak.suggestify.domain.model.request.TrackRequest
-import com.burak.suggestify.domain.model.response.Track
+import com.burak.suggestify.domain.model.response.similarTracks.Track
 import com.burak.suggestify.domain.repository.track.TracksRepository
 import com.burak.suggestify.domain.usecase.BaseUseCase
 import kotlinx.coroutines.flow.Flow
