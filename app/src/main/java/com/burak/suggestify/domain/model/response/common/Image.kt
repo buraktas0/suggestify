@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response.similarArtists
+package com.burak.suggestify.domain.model.response.common
 
 import com.google.gson.annotations.SerializedName
 
