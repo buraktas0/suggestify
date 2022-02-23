@@ -50,6 +50,7 @@
         android:layout_margin="16dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:text="@string/button_search"
+        android:id="@+id/search_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
