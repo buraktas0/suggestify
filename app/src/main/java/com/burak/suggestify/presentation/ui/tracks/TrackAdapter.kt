@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.R
 import com.burak.suggestify.databinding.CardTrackBinding
 import com.burak.suggestify.domain.model.response.similarTracks.Track
+import com.burak.suggestify.util.GlideApp
 import com.burak.suggestify.util.toPercentage
 
 class TrackAdapter(
@@ -33,6 +34,9 @@ class TrackAdapter(
                 trackCardTitle.text = track.name
                 trackMatchText.text =
                     binding.root.context.getString(R.string.text_match).plus((track.match.toPercentage()))
+                GlideApp.with(binding.root)
+                    .load(track.image[0])
+                    .into(trackImage)
             }
         }
     }

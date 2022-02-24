@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.R
 import com.burak.suggestify.databinding.CardArtistBinding
 import com.burak.suggestify.domain.model.response.similarArtists.Artist
+import com.burak.suggestify.util.GlideApp
 import com.burak.suggestify.util.toPercentage
 
 class ArtistAdapter(
@@ -33,6 +34,9 @@ class ArtistAdapter(
                 artistCardTitle.text = artist.name
                 artistMatchText.text =
                     binding.root.context.getString(R.string.text_match).plus((artist.match.toPercentage()))
+                GlideApp.with(binding.root)
+                    .load(artist.image[0])
+                    .into(artistImage)
             }
         }
     }
