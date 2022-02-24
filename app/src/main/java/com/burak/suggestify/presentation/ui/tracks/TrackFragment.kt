@@ -15,6 +15,7 @@ class TrackFragment : Fragment() {
     private lateinit var viewModel: TrackViewModel
     private lateinit var binding: FragmentTrackBinding
     private val args: TrackFragmentArgs by navArgs()
+    private val adapter: TrackAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +38,6 @@ class TrackFragment : Fragment() {
 
     private fun init() {
         val recyclerView = binding.recyclerViewTracks
-        val adapter = TrackAdapter(emptyList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
@@ -46,7 +46,7 @@ class TrackFragment : Fragment() {
 
     private fun observe() {
         viewModel.similarTracksLiveData.observe(viewLifecycleOwner, Observer {
-
+            adapter?.setItems(it.similarTracks.trackList)
         })
     }
 

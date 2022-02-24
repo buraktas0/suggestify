@@ -9,9 +9,9 @@ import com.burak.suggestify.domain.model.response.similarArtists.Artist
 import com.burak.suggestify.util.GlideApp
 import com.burak.suggestify.util.toPercentage
 
-class ArtistAdapter(
-    private val artists: List<Artist>
-) : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>() {
+class ArtistAdapter : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>() {
+
+    private var artists = emptyList<Artist>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
         val view = CardArtistBinding.inflate(LayoutInflater.from(parent.context))
@@ -39,5 +39,9 @@ class ArtistAdapter(
                     .into(artistImage)
             }
         }
+    }
+
+    fun setItems(artists: List<Artist>) {
+        this.artists = artists
     }
 }

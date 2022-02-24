@@ -9,9 +9,9 @@ import com.burak.suggestify.domain.model.response.similarTracks.Track
 import com.burak.suggestify.util.GlideApp
 import com.burak.suggestify.util.toPercentage
 
-class TrackAdapter(
-    private val tracks: List<Track>
-) : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
+class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
+
+    private var tracks = emptyList<Track>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val view = CardTrackBinding.inflate(LayoutInflater.from(parent.context))
@@ -39,5 +39,9 @@ class TrackAdapter(
                     .into(trackImage)
             }
         }
+    }
+
+    fun setItems(tracks: List<Track>) {
+        this.tracks = tracks
     }
 }

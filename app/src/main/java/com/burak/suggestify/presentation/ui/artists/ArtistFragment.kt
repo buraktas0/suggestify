@@ -17,6 +17,7 @@ class ArtistFragment : Fragment() {
     private lateinit var viewModel: ArtistViewModel
     private lateinit var binding: FragmentArtistBinding
     private val args: ArtistFragmentArgs by navArgs()
+    private val adapter: ArtistAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +40,6 @@ class ArtistFragment : Fragment() {
 
     private fun init() {
         val recyclerView = binding.recyclerViewArtists
-        val adapter = ArtistAdapter(emptyList())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
@@ -48,7 +48,7 @@ class ArtistFragment : Fragment() {
 
     private fun observe() {
         viewModel.similarArtistsLiveData.observe(viewLifecycleOwner, Observer {
-
+            adapter?.setItems(it.similarArtists.artistList)
         })
     }
 }
