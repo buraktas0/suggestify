@@ -1,13 +1,12 @@
 package com.burak.suggestify.presentation.ui.artists
 
-import android.content.res.Resources
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.R
 import com.burak.suggestify.databinding.CardArtistBinding
 import com.burak.suggestify.domain.model.response.similarArtists.Artist
+import com.burak.suggestify.util.toPercentage
 
 class ArtistAdapter(
     private val artists: List<Artist>
@@ -33,7 +32,7 @@ class ArtistAdapter(
             binding.apply {
                 artistCardTitle.text = artist.name
                 artistMatchText.text =
-                    binding.root.context.getString(R.string.text_match).plus((artist.match * 100))
+                    binding.root.context.getString(R.string.text_match).plus((artist.match.toPercentage()))
             }
         }
     }

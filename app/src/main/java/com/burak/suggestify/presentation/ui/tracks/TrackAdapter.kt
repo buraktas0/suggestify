@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.R
 import com.burak.suggestify.databinding.CardTrackBinding
 import com.burak.suggestify.domain.model.response.similarTracks.Track
+import com.burak.suggestify.util.toPercentage
 
 class TrackAdapter(
     private val tracks: List<Track>
@@ -31,7 +32,7 @@ class TrackAdapter(
             binding.apply {
                 trackCardTitle.text = track.name
                 trackMatchText.text =
-                    binding.root.context.getString(R.string.text_match).plus((track.match * 100))
+                    binding.root.context.getString(R.string.text_match).plus((track.match.toPercentage()))
             }
         }
     }
