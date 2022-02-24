@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/search_fragment">
+
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.burak.suggestify.presentation.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_fragment_to_artist_fragment"
+            app:destination="@id/artist_fragment">
+            <argument
+                android:name="artistName"
+                app:argType="string"/>
+        </action>
+        <action
+            android:id="@+id/action_search_fragment_to_track_fragment"
+            app:destination="@id/track_fragment">
+            <argument
+                android:name="artistName"
+                app:argType="string"/>
+            <argument
+                android:name="trackName"
+                app:argType="string"/>
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/artist_fragment"
+        android:name="com.burak.suggestify.presentation.ui.artists.ArtistFragment"
+        tools:layout="@layout/fragment_artist">
+        <argument
+            android:name="artistName"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/track_fragment"
+        android:name="com.burak.suggestify.presentation.ui.tracks.TrackFragment"
+        tools:layout="@layout/fragment_track">
+        <argument
+            android:name="artistName"
+            app:argType="string"/>
+        <argument
+            android:name="trackName"
+            app:argType="string"/>
+    </fragment>
+
+</navigation>

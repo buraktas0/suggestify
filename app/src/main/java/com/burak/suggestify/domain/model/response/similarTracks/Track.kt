@@ -12,5 +12,5 @@ data class Track(
     val streamable: Streamable,
     val duration : Int,
     val artist: Artist,
-    val image: Image
+    val image: List<Image>
 )
