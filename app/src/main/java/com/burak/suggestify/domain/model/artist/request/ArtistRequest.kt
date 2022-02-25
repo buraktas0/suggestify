@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.request
+package com.burak.suggestify.domain.model.artist.request
 
 data class ArtistRequest (
     val artist : String,

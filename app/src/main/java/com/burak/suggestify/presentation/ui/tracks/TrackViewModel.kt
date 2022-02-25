@@ -3,9 +3,9 @@ package com.burak.suggestify.presentation.ui.tracks
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.burak.suggestify.domain.model.request.TrackRequest
-import com.burak.suggestify.domain.model.response.similarTracks.SimilarTracksResponse
-import com.burak.suggestify.domain.usecase.track.GetSimilarTrackUseCase
+import com.burak.suggestify.domain.model.track.request.TrackRequest
+import com.burak.suggestify.domain.model.track.response.SimilarTracksResponse
+import com.burak.suggestify.domain.usecase.track.GetSimilarTracksUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TrackViewModel @Inject constructor(
-    private val getSimilarTrackUseCase: GetSimilarTrackUseCase
+    private val getSimilarTracksUseCase: GetSimilarTracksUseCase
 ) : ViewModel() {
 
     val similarTracksLiveData = MutableLiveData<SimilarTracksResponse>()
@@ -33,7 +33,7 @@ class TrackViewModel @Inject constructor(
                 artist = artist,
                 track = track,
                 autoCorrect = 1,
-                limit = null,
+                limit = 10,
                 mbid = null
             )
         )
@@ -41,7 +41,7 @@ class TrackViewModel @Inject constructor(
 
     private fun getSimilarTracks(request: TrackRequest) {
         viewModelScope.launch {
-            getSimilarTrackUseCase.execute(request)
+            getSimilarTracksUseCase.execute(request)
                 .catch {
 
                 }

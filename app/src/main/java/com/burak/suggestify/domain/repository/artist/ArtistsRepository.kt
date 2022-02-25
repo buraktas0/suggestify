@@ -1,7 +1,7 @@
 package com.burak.suggestify.domain.repository.artist
 
-import com.burak.suggestify.domain.model.request.ArtistRequest
-import com.burak.suggestify.domain.model.response.similarArtists.SimilarArtistsResponse
+import com.burak.suggestify.domain.model.artist.request.ArtistRequest
+import com.burak.suggestify.domain.model.artist.response.SimilarArtistsResponse
 import kotlinx.coroutines.flow.Flow
 
 interface ArtistsRepository {

@@ -3,10 +3,9 @@ package com.burak.suggestify.presentation.ui.artists
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.burak.suggestify.domain.model.request.ArtistRequest
-import com.burak.suggestify.domain.model.response.similarArtists.Artist
-import com.burak.suggestify.domain.model.response.similarArtists.SimilarArtistsResponse
-import com.burak.suggestify.domain.usecase.artist.GetSimilarArtistUseCase
+import com.burak.suggestify.domain.model.artist.request.ArtistRequest
+import com.burak.suggestify.domain.model.artist.response.SimilarArtistsResponse
+import com.burak.suggestify.domain.usecase.artist.GetSimilarArtistsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -15,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArtistViewModel @Inject constructor(
-    private val getSimilarArtistUseCase: GetSimilarArtistUseCase
+    private val getSimilarArtistsUseCase: GetSimilarArtistsUseCase
 ) : ViewModel() {
 
     val similarArtistsLiveData = MutableLiveData<SimilarArtistsResponse>()
@@ -31,7 +30,7 @@ class ArtistViewModel @Inject constructor(
             request = ArtistRequest(
                 artist = artist,
                 autoCorrect = 1,
-                limit = null,
+                limit = 10,
                 mbid = null
             )
         )
@@ -39,7 +38,7 @@ class ArtistViewModel @Inject constructor(
 
     private fun getSimilarArtists(request: ArtistRequest) {
         viewModelScope.launch {
-            getSimilarArtistUseCase.execute(request)
+            getSimilarArtistsUseCase.execute(request)
                 .catch {
 
                 }

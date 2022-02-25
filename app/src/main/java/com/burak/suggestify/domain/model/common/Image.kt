@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response.common
+package com.burak.suggestify.domain.model.common
 
 import com.google.gson.annotations.SerializedName
 

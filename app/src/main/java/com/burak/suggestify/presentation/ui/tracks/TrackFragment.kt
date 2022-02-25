@@ -6,16 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.burak.suggestify.databinding.FragmentTrackBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrackFragment : Fragment() {
 
     private lateinit var viewModel: TrackViewModel
     private lateinit var binding: FragmentTrackBinding
     private val args: TrackFragmentArgs by navArgs()
-    private val adapter: TrackAdapter? = null
+    private var adapter: TrackAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,6 +28,8 @@ class TrackFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentTrackBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this)[TrackViewModel::class.java]
+
         return binding.root
     }
 
@@ -38,10 +43,11 @@ class TrackFragment : Fragment() {
 
     private fun init() {
         val recyclerView = binding.recyclerViewTracks
-        recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
+        adapter = TrackAdapter()
+        recyclerView.adapter = adapter
     }
 
     private fun observe() {

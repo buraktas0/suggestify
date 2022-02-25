@@ -1,14 +1,12 @@
-package com.burak.suggestify.data.remote
+package com.burak.suggestify.di
 
 import com.burak.suggestify.BuildConfig
-import com.google.gson.GsonBuilder
+import com.burak.suggestify.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

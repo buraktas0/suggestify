@@ -1,7 +1,7 @@
-package com.burak.suggestify.domain.model.response.similarTracks
+package com.burak.suggestify.domain.model.track.response
 
-import com.burak.suggestify.domain.model.response.common.Image
-import com.burak.suggestify.domain.model.response.common.Streamable
+import com.burak.suggestify.domain.model.common.Image
+import com.burak.suggestify.domain.model.common.Streamable
 
 data class Track(
     val name : String,

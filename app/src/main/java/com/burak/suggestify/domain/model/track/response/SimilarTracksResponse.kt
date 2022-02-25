@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response.similarTracks
+package com.burak.suggestify.domain.model.track.response
 
 import com.google.gson.annotations.SerializedName
 

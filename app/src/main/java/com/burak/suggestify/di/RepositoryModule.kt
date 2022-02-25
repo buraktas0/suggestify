@@ -1,4 +1,4 @@
-package com.burak.suggestify.data.repository
+package com.burak.suggestify.di
 
 import com.burak.suggestify.data.remote.ApiService
 import com.burak.suggestify.data.repository.artist.ArtistsDataRepository

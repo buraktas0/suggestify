@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.burak.suggestify.databinding.FragmentArtistBinding
 import com.burak.suggestify.presentation.ui.search.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArtistFragment : Fragment() {
 
     private lateinit var viewModel: ArtistViewModel
     private lateinit var binding: FragmentArtistBinding
     private val args: ArtistFragmentArgs by navArgs()
-    private val adapter: ArtistAdapter? = null
+    private var adapter: ArtistAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +30,8 @@ class ArtistFragment : Fragment() {
         super.onCreateView(inflater, container, savedInstanceState)
 
         binding = FragmentArtistBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this)[ArtistViewModel::class.java]
+
         return binding.root
     }
 
@@ -40,10 +45,11 @@ class ArtistFragment : Fragment() {
 
     private fun init() {
         val recyclerView = binding.recyclerViewArtists
-        recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
+        adapter = ArtistAdapter()
+        recyclerView.adapter = adapter
     }
 
     private fun observe() {

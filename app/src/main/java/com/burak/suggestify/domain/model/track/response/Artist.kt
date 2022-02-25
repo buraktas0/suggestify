@@ -1,4 +1,4 @@
-package com.burak.suggestify.domain.model.response.similarTracks
+package com.burak.suggestify.domain.model.track.response
 
 data class Artist(
     val name : String,
