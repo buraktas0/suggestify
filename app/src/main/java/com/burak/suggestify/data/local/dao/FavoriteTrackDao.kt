@@ -4,16 +4,17 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.burak.suggestify.data.local.model.TrackEntity
 
 @Dao
 interface FavoriteTrackDao {
 
     @Query("SELECT * FROM tracks")
-    fun getAllTracks(): List<FavoriteTrackDao>
+    suspend fun getAllTracks(): List<TrackEntity>
 
     @Insert
-    fun insertTrack(vararg track: FavoriteTrackDao)
+    suspend fun insertTrack(vararg track: TrackEntity)
 
     @Delete
-    fun deleteTrack(track: FavoriteTrackDao)
+    suspend fun deleteTrack(track: TrackEntity)
 }

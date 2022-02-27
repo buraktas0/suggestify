@@ -7,6 +7,7 @@ import com.burak.suggestify.data.local.dao.FavoriteTrackDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,7 +17,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context): AppDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return AppDatabase.getInstance(context)
     }
 

@@ -48,7 +48,7 @@ class ArtistFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context).apply {
             this.orientation = LinearLayoutManager.VERTICAL
         }
-        adapter = ArtistAdapter()
+        adapter = ArtistAdapter(viewModel)
         recyclerView.adapter = adapter
     }
 

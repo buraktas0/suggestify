@@ -4,16 +4,17 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.burak.suggestify.data.local.model.ArtistEntity
 
 @Dao
 interface FavoriteArtistDao {
 
     @Query("SELECT * FROM artists")
-    fun getAllArtists(): List<FavoriteArtistDao>
+    suspend fun getAllArtists(): List<ArtistEntity>
 
     @Insert
-    fun insertArtist(vararg artist: FavoriteArtistDao)
+    suspend fun insertArtist(vararg artist: ArtistEntity)
 
-    @Delete
-    fun deleteArtist(artist: FavoriteArtistDao)
+    @Query("DELETE FROM artists WHERE name = :name")
+    suspend fun deleteArtist(name: String)
 }

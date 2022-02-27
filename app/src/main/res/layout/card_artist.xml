@@ -7,6 +7,15 @@
     android:layout_margin="8dp"
     app:cardElevation="2dp">
 
+    <CheckBox
+        android:id="@+id/favorite_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/selector_favorite"
+        app:buttonTint="#FFFF0000"
+        android:layout_gravity="end"
+        android:elevation="5dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

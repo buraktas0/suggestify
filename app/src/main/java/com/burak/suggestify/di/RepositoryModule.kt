@@ -1,9 +1,15 @@
 package com.burak.suggestify.di
 
+import com.burak.suggestify.data.local.dao.FavoriteArtistDao
+import com.burak.suggestify.data.local.dao.FavoriteTrackDao
+import com.burak.suggestify.data.local.mapper.ArtistMapper
+import com.burak.suggestify.data.local.mapper.TrackMapper
 import com.burak.suggestify.data.remote.ApiService
 import com.burak.suggestify.data.repository.artist.ArtistsDataRepository
+import com.burak.suggestify.data.repository.favorite.FavoritesDataRepository
 import com.burak.suggestify.data.repository.track.TracksDataRepository
 import com.burak.suggestify.domain.repository.artist.ArtistsRepository
+import com.burak.suggestify.domain.repository.favorite.FavoritesRepository
 import com.burak.suggestify.domain.repository.track.TracksRepository
 import dagger.Module
 import dagger.Provides
@@ -25,5 +31,11 @@ class RepositoryModule {
     @Provides
     fun provideTracksRepository(apiService: ApiService) : TracksRepository {
         return TracksDataRepository(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFavoritesRepository(artistDao: FavoriteArtistDao, trackDao: FavoriteTrackDao) : FavoritesRepository {
+        return FavoritesDataRepository(artistDao, trackDao, ArtistMapper(), TrackMapper())
     }
 }

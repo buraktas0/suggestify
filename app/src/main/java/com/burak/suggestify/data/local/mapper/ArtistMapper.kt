@@ -1,23 +1,18 @@
 package com.burak.suggestify.data.local.mapper
 
 import com.burak.suggestify.data.local.model.ArtistEntity
-import com.burak.suggestify.domain.model.artist.response.Artist
+import com.burak.suggestify.domain.model.favorite.FavoriteArtist
+import javax.inject.Inject
 
-class ArtistMapper : BaseMapper<ArtistEntity, Artist> {
+class ArtistMapper @Inject constructor() : BaseMapper<ArtistEntity, FavoriteArtist> {
 
-    override fun mapToModel(entity: ArtistEntity): Artist {
-        TODO("Not yet implemented")
+    override fun mapToModel(entity: ArtistEntity): FavoriteArtist {
+        return FavoriteArtist(name = entity.name, image = entity.image , url = entity.url, time = entity.time)
     }
 
-    override fun mapToModel(entityList: List<ArtistEntity>): List<Artist> {
-        TODO("Not yet implemented")
+
+    override fun mapToEntity(model: FavoriteArtist): ArtistEntity {
+        return ArtistEntity(name = model.name, image = model.image, url = model.url, time = model.time)
     }
 
-    override fun mapToEntity(model: Artist): ArtistEntity {
-        TODO("Not yet implemented")
-    }
-
-    override fun mapToEntity(model: List<Artist>): List<ArtistEntity> {
-        TODO("Not yet implemented")
-    }
 }
