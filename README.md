@@ -22,3 +22,4 @@ Project for getting similar artists or tracks from [Last.fm API](https://www.las
 * [Retrofit](https://square.github.io/retrofit/)
 * [Glide](https://bumptech.github.io/glide/)
 
+<h4>NOTE:</h4> Sadly Last.fm stopped sharing artist/album images publicly through API. It returns a placeholder image instead. That's why a white star image shows up in screenshots.
