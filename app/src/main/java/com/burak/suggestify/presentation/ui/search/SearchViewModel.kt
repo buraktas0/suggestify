@@ -2,7 +2,6 @@ package com.burak.suggestify.presentation.ui.search
 
 import androidx.lifecycle.*
 import com.burak.suggestify.domain.model.favorite.FavoriteArtist
-import com.burak.suggestify.domain.model.favorite.FavoriteTrack
 import com.burak.suggestify.domain.usecase.favorite.DeleteFavoriteArtistUseCase
 import com.burak.suggestify.domain.usecase.favorite.GetFavoriteArtistsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,6 +33,9 @@ class SearchViewModel @Inject constructor(
     fun delete(artist: FavoriteArtist) {
         viewModelScope.launch {
             deleteFavoriteArtistUseCase.execute(artist)
+            val items = favoriteArtistsLiveData.value?.toMutableList()
+            items?.remove(artist)
+            favoriteArtistsLiveData.postValue(items!!)
         }
     }
 }

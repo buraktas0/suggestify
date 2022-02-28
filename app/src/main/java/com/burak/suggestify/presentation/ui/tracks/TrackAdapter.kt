@@ -1,11 +1,14 @@
 package com.burak.suggestify.presentation.ui.tracks
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.R
 import com.burak.suggestify.databinding.CardTrackBinding
 import com.burak.suggestify.domain.model.track.response.Track
+import com.burak.suggestify.presentation.ui.artists.ArtistViewModel
 import com.burak.suggestify.util.GlideApp
 import com.burak.suggestify.util.toPercentage
 
@@ -20,6 +23,7 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
 
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(tracks[position])
+        holder.initListeners(tracks[position])
     }
 
     override fun getItemCount(): Int {
@@ -38,6 +42,16 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
                 GlideApp.with(binding.root)
                     .load(track.image[0].text)
                     .into(trackImage)
+            }
+        }
+
+        fun initListeners(track: Track) {
+            binding.trackOpen.setOnClickListener {
+                binding.root.context.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW, Uri.parse(track.url)
+                    )
+                )
             }
         }
     }

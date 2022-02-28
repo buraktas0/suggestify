@@ -3,6 +3,7 @@
     <string name="hint_artist">Artist</string>
     <string name="hint_track">Track</string>
     <string name="button_search">Search</string>
+    <string name="text_fav">Likes</string>
     <string name="description_artist">Artist Image</string>
     <string name="description_track">Track Image</string>
     <string name="text_match">Match: %</string>

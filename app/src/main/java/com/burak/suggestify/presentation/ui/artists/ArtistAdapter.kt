@@ -1,5 +1,7 @@
 package com.burak.suggestify.presentation.ui.artists
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +23,7 @@ class ArtistAdapter(val viewModel: ArtistViewModel) :
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         holder.bind(artists[position])
-        holder.binding.favoriteArtist.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) viewModel.saveArtist(artists[position])
-        }
+        holder.initListeners(viewModel, artists[position])
     }
 
     override fun getItemCount(): Int {
@@ -42,6 +42,19 @@ class ArtistAdapter(val viewModel: ArtistViewModel) :
                 GlideApp.with(binding.root.context)
                     .load(artist.image[0].text)
                     .into(artistImage)
+            }
+        }
+
+        fun initListeners(viewModel: ArtistViewModel, artist: Artist) {
+            binding.favoriteArtist.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) viewModel.saveArtist(artist)
+            }
+            binding.artistOpen.setOnClickListener {
+                binding.root.context.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW, Uri.parse(artist.url)
+                    )
+                )
             }
         }
     }

@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.burak.suggestify.databinding.FragmentSearchBinding
-import com.burak.suggestify.presentation.ui.artists.ArtistAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
