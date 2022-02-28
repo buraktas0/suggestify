@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArtistsRepository {
 
-    fun getSimilarArtists(request : ArtistRequest) : Flow<SimilarArtistsResponse>
+    fun getSimilarArtists(request: ArtistRequest): Flow<SimilarArtistsResponse>
 }

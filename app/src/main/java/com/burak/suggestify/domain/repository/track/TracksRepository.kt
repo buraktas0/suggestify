@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface TracksRepository {
 
-    fun getSimilarTracks(request : TrackRequest) : Flow<SimilarTracksResponse>
+    fun getSimilarTracks(request: TrackRequest): Flow<SimilarTracksResponse>
 }

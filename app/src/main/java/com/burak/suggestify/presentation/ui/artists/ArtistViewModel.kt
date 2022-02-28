@@ -54,13 +54,14 @@ class ArtistViewModel @Inject constructor(
 
     fun saveArtist(artist: Artist) {
         viewModelScope.launch {
-            saveFavoriteArtistUseCase.execute(FavoriteArtist(artist.name, artist.image[0].text, artist.url, System.currentTimeMillis()))
-        }
-    }
-
-    fun deleteArtist(artist: Artist) {
-        viewModelScope.launch {
-
+            saveFavoriteArtistUseCase.execute(
+                FavoriteArtist(
+                    artist.name,
+                    artist.image[0].text,
+                    artist.url,
+                    System.currentTimeMillis()
+                )
+            )
         }
     }
 }

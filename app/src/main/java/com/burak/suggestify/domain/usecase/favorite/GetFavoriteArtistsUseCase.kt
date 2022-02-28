@@ -9,12 +9,10 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class GetFavoriteArtistsUseCase @Inject constructor(
-    private val repository: FavoritesRepository,
-    private val mapper: ArtistMapper
+    private val repository: FavoritesRepository
 ) : BaseUseCase<Any?, List<FavoriteArtist>>() {
 
     override fun execute(params: Any?): Flow<List<FavoriteArtist>> {
         return repository.getFavoriteArtists()
     }
-
 }

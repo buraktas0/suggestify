@@ -15,6 +15,9 @@ interface FavoriteArtistDao {
     @Insert
     suspend fun insertArtist(vararg artist: ArtistEntity)
 
+    @Query("SELECT EXISTS (SELECT 1 FROM artists WHERE name = :name)")
+    suspend fun exists(name: String): Boolean
+
     @Query("DELETE FROM artists WHERE name = :name")
     suspend fun deleteArtist(name: String)
 }

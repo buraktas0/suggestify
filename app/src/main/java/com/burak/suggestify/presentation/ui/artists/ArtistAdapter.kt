@@ -21,9 +21,8 @@ class ArtistAdapter(val viewModel: ArtistViewModel) :
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         holder.bind(artists[position])
-        holder.binding.favoriteArtist.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.binding.favoriteArtist.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) viewModel.saveArtist(artists[position])
-            else viewModel.deleteArtist(artists[position])
         }
     }
 

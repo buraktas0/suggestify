@@ -33,7 +33,8 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
             binding.apply {
                 trackCardTitle.text = track.name
                 trackMatchText.text =
-                    binding.root.context.getString(R.string.text_match).plus((track.match.toPercentage()))
+                    binding.root.context.getString(R.string.text_match)
+                        .plus((track.match.toPercentage()))
                 GlideApp.with(binding.root)
                     .load(track.image[0].text)
                     .into(trackImage)

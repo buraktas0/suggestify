@@ -5,20 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.burak.suggestify.data.local.dao.FavoriteArtistDao
-import com.burak.suggestify.data.local.dao.FavoriteTrackDao
 import com.burak.suggestify.data.local.model.ArtistEntity
-import com.burak.suggestify.data.local.model.TrackEntity
 
 @Database(
     entities = [
-        ArtistEntity::class,
-        TrackEntity::class],
-    version = 1
+        ArtistEntity::class],
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun favoriteArtistDao(): FavoriteArtistDao
-    abstract fun favoriteTrackDao(): FavoriteTrackDao
 
     companion object {
 
@@ -31,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
-        private fun build(context: Context) : AppDatabase {
+        private fun build(context: Context): AppDatabase {
             return Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
@@ -39,6 +36,4 @@ abstract class AppDatabase : RoomDatabase() {
             ).fallbackToDestructiveMigration().build()
         }
     }
-
-
 }

@@ -55,5 +55,4 @@ class TrackFragment : Fragment() {
             adapter?.setItems(it.similarTracks.trackList)
         })
     }
-
 }
