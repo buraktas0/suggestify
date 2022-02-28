@@ -1,11 +1,11 @@
 package com.burak.suggestify.presentation.ui.search
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.burak.suggestify.databinding.CardFavoriteBinding
-import com.burak.suggestify.domain.model.artist.response.Artist
 import com.burak.suggestify.domain.model.favorite.FavoriteArtist
 import com.burak.suggestify.util.GlideApp
 
@@ -21,9 +21,7 @@ class FavoriteArtistAdapter(val viewModel: SearchViewModel) :
 
     override fun onBindViewHolder(holder: FavoriteArtistViewHolder, position: Int) {
         holder.bind(favoriteArtists[position])
-        holder.binding.deleteFavorite.setOnClickListener {
-            viewModel.delete(favoriteArtists[position])
-        }
+        holder.initListeners(viewModel, favoriteArtists[position])
     }
 
     override fun getItemCount(): Int {
@@ -39,6 +37,19 @@ class FavoriteArtistAdapter(val viewModel: SearchViewModel) :
                 GlideApp.with(binding.root.context)
                     .load(artist.image)
                     .into(favoriteImage)
+            }
+        }
+
+        fun initListeners(viewModel: SearchViewModel, favoriteArtist: FavoriteArtist) {
+            binding.deleteFavorite.setOnClickListener {
+                viewModel.delete(favoriteArtist)
+            }
+            binding.favOpen.setOnClickListener {
+                binding.root.context.startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW, Uri.parse(favoriteArtist.url)
+                    )
+                )
             }
         }
     }

@@ -10,7 +10,7 @@ import com.burak.suggestify.data.local.model.ArtistEntity
 @Database(
     entities = [
         ArtistEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -33,7 +33,7 @@ abstract class AppDatabase : RoomDatabase() {
                 context.applicationContext,
                 AppDatabase::class.java,
                 "favDb"
-            ).fallbackToDestructiveMigration().build()
+            ).build()
         }
     }
 }
