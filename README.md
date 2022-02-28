@@ -3,7 +3,7 @@
 Project for getting similar artists or tracks from [Last.fm API](https://www.last.fm/api) based on user input 
 
 <h3>Screenshots<h3>
-<img src="/Screenshots/1.png" width="175">  <img src="/Screenshots/2.png" width="175">  <img src="/Screenshots/3.png" width="175">  <img src="/Screenshots/4.png" width="175">  <img src="/Screenshots/5.png" width="175">
+<img src="/Screenshots/1.png" width="175">  <img src="/Screenshots/2.png" width="175">  <img src="/Screenshots/4.png" width="175">  <img src="/Screenshots/5.png" width="175">
 
 
 
